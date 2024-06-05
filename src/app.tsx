@@ -2,6 +2,7 @@ import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Home } from './components/home';
 import { Explore } from './components/explore';
+import { LogIn } from './components/manage-user';
 
 export const App = () => {
 
@@ -13,6 +14,10 @@ export const App = () => {
         {
             path: '/explore',
             element: <Explore />
+        },
+        {
+            path: '/login',
+            element: <LogIn />
         }
     ]);
 
