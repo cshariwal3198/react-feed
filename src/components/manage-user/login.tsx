@@ -6,10 +6,11 @@ import { Form, SubmitButton } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
-export const LogIn = memo(() => {
+const LogIn = memo(() => {
     const { userInfo } = useUserInformation();
     const formMethods = useForm();
     const navigate = useNavigate();
+    const showErrorMessge = (message: string) => (toast.error(message));
 
     const validateExistingUser = useCallback((password: string, emailValue: string) => (
         Boolean(userInfo?.password === password && userInfo?.email === emailValue)
@@ -17,12 +18,12 @@ export const LogIn = memo(() => {
 
     const onSubmit: SubmitHandler<FieldValues> = useCallback((values) => {
         if (!userInfo) {
-            toast.error('User not registered, Please Sign In');
+            showErrorMessge('User not registered, Please Sign In');
         } else {
             if (validateExistingUser(values.password, values.email)) {
                 navigate('/');
             } else {
-                toast.error('Wrong credentials');
+                showErrorMessge('Wrong credentials');
             }
         }
     }, [navigate, userInfo, validateExistingUser]);
@@ -36,3 +37,5 @@ export const LogIn = memo(() => {
         </FormProvider>
     );
 });
+
+export default LogIn;

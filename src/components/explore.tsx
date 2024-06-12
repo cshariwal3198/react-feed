@@ -1,8 +1,10 @@
 import { memo } from "react";
 
-export const Explore = memo(() => {
+const Explore = memo(() => {
 
     return (
         <div>explore</div>
     )
 });
+
+export default Explore;

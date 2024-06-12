@@ -1,13 +1,15 @@
 import { memo } from "react";
-import { LogIn, SignIn } from "./manage-user";
+import LogIn from "./manage-user/login";
+import SignIn from "./manage-user/signin";
+import { Navbar } from "./navbar/navbar";
 
-export const Home = memo(() => {
+const Home = memo(() => {
 
     return (
         <div>
-            <SignIn />
-            <div style={{ height: '40px' }}></div>
-            <LogIn />
+            <Navbar />
         </div>
     )
 });
+
+export default Home;
